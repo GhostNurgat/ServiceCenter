@@ -9,6 +9,7 @@ namespace ServiceCenter.Models
 {
     public class StaffMember
     {
+        [Key]
         public int StaffId { get; set; }
 
         [StringLength(50, ErrorMessage = "Превышено макс. длины строки для поля \"Фамилия\"!")]
