@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ServiceCenter"
         mc:Ignorable="d"
-        Title="Сервисный центр" Height="450" Width="800">
+        Title="Сервисный центр" Height="580" Width="1100">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Background="{StaticResource MainColor}">
+            <Label Content="Сотрудники" Style="{StaticResource NavigationLabel}" 
+                   VerticalAlignment="Center" />
+            <Label Content="Клиенты" Style="{StaticResource NavigationLabel}"
+                   VerticalAlignment="Center" />
+            <Label Content="Заказы" Style="{StaticResource NavigationLabel}"
+                   VerticalAlignment="Center" />
+        </StackPanel>
+
+        <Frame Grid.Row="1" Grid.ColumnSpan="2"
+               x:Name="MainFrame" NavigationUIVisibility="Hidden" />
+
+        <StackPanel Grid.Column="1"
+                    Background="{StaticResource MainColor}">
+            <Button Content="Изменить код" Style="{StaticResource MenuButton}"
+                    Height="45" />
+        </StackPanel>
     </Grid>
 </Window>

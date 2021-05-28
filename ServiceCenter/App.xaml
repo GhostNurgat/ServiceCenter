@@ -4,6 +4,44 @@
              xmlns:local="clr-namespace:ServiceCenter"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="MainColor" Color="#3366CC" />
+        <SolidColorBrush x:Key="AdditionalColor" Color="#6699CC" />
+        <SolidColorBrush x:Key="AccentColor" Color="#66CCCC" />
+
+        <Style TargetType="Label" x:Key="HeaderLabel_1">
+            <Setter Property="FontFamily" Value="Arial Black" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{StaticResource AdditionalColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="HeaderLabel_2">
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="NavigationLabel">
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Margin" Value="10,0" />
+            <Setter Property="FontWeight" Value="DemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource AccentColor}" />
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Button" x:Key="MenuButton">
+            <Setter Property="Background" Value="{StaticResource AdditionalColor}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="12,2" />
+            <Setter Property="Width" Value="150" />
+        </Style>
     </Application.Resources>
 </Application>
