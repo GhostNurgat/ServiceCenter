@@ -33,7 +33,7 @@ namespace ServiceCenter.Models
         [Required(ErrorMessage = "Поле \"Номер телефона\" является обезательным.")]
         public string Phone { get; set; }
 
-        public ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
         public StaffMember()
         {
             Orders = new List<Order>();

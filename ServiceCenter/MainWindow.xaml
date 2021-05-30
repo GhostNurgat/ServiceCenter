@@ -18,7 +18,7 @@
 
         <StackPanel Orientation="Horizontal" Background="{StaticResource MainColor}">
             <Label Content="Сотрудники" Style="{StaticResource NavigationLabel}" 
-                   VerticalAlignment="Center" />
+                   VerticalAlignment="Center" MouseDown="GoToStaffPage" />
             <Label Content="Клиенты" Style="{StaticResource NavigationLabel}"
                    VerticalAlignment="Center" />
             <Label Content="Заказы" Style="{StaticResource NavigationLabel}"

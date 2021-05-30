@@ -51,6 +51,6 @@ namespace ServiceCenter.Models
         [DataType(DataType.EmailAddress, ErrorMessage = "Неверный Email!")]
         public string Email { get; set; }
 
-        public Order Order { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

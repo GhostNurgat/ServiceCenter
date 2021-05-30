@@ -40,8 +40,8 @@ namespace ServiceCenter.Models
         [DataType(DataType.Currency, ErrorMessage = "Значения не является число!")]
         public decimal Payment { get; set; }
 
-        public Client Client { get; set; }
-        public StaffMember StaffMember { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual StaffMember StaffMember { get; set; }
 
     }
 }

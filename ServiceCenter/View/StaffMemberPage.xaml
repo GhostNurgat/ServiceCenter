@@ -1,0 +1,44 @@
+﻿<Page x:Class="ServiceCenter.View.StaffMemberPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ServiceCenter.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StaffMemberPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="staffList" ItemsSource="{Binding StaffMembers}"
+                 Grid.Row="1"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel ItemWidth="650" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Surname}" Style="{StaticResource HeaderLabel_2}" />
+                            <Label Content="{Binding Name}" Style="{StaticResource HeaderLabel_2}" />
+                            <Label Content="{Binding Patronymic}" Style="{StaticResource HeaderLabel_2}" />
+                        </StackPanel>
+                        <TextBlock FontSize="16">
+                            <Run Text="Должность:" FontWeight="Bold" />
+                            <Run Text="{Binding Position}" />
+                            <Run Text="Телефон:" FontWeight="Bold" />
+                            <Run Text="{Binding Phone}" />
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>
