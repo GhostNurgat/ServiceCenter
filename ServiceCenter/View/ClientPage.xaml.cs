@@ -13,25 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ServiceCenter
+namespace ServiceCenter.View
 {
-    using ServiceCenter.View;
+    using ServiceCenter.ViewModel;
 
-    public partial class MainWindow : Window
+    public partial class ClientPage : Page
     {
-        public MainWindow()
+        public ClientPage()
         {
             InitializeComponent();
-        }
-
-        private void GoToStaffPage(object sender, MouseButtonEventArgs e)
-        {
-            MainFrame.Navigate(new StaffMemberPage());
-        }
-
-        private void GoToClientPage(object sender, MouseButtonEventArgs e)
-        {
-            MainFrame.Navigate(new ClientPage());
+            this.DataContext = new ClientViewModel();
         }
     }
 }

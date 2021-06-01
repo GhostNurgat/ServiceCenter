@@ -20,7 +20,7 @@
             <Label Content="Сотрудники" Style="{StaticResource NavigationLabel}" 
                    VerticalAlignment="Center" MouseDown="GoToStaffPage" />
             <Label Content="Клиенты" Style="{StaticResource NavigationLabel}"
-                   VerticalAlignment="Center" />
+                   VerticalAlignment="Center" MouseDown="GoToClientPage" />
             <Label Content="Заказы" Style="{StaticResource NavigationLabel}"
                    VerticalAlignment="Center" />
         </StackPanel>
