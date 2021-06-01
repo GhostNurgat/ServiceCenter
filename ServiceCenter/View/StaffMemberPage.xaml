@@ -11,12 +11,22 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="45" />
             <RowDefinition />
+            <RowDefinition Height="45" />
         </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Content="+" Background="{StaticResource AdditionalColor}"
+                    Foreground="White" Width="25"
+                    Height="25" Margin="8,0" Command="{Binding AddCommand}" />
+            <Button Content="Обновить" Style="{StaticResource MenuButton}"
+                    Click="UpdateButton" />
+        </StackPanel>
 
         <ListBox x:Name="staffList" ItemsSource="{Binding StaffMembers}"
                  Grid.Row="1"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 BorderThickness="0">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel ItemWidth="650" />
@@ -40,5 +50,11 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Button Content="Редактировать" Style="{StaticResource MenuButton}"
+                    Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=staffList, Path=SelectedItem}" />
+            <Button Content="Удалить" Style="{StaticResource MenuButton}"
+                    Command="{Binding RemoveCommand}" CommandParameter="{Binding ElementName=staffList, Path=SelectedItem}" />
+        </StackPanel>
     </Grid>
 </Page>

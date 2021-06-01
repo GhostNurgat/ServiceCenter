@@ -10,25 +10,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ServiceCenter.View
 {
+    using ServiceCenter.Models;
     using ServiceCenter.ViewModel;
-    using ServiceCenter.View;
 
-    public partial class StaffMemberPage : Page
+    public partial class AddStaffWindow : Window
     {
-        public StaffMemberPage()
+        public StaffMember StaffMember { get; private set; }
+
+        public AddStaffWindow(StaffMember staff)
         {
             InitializeComponent();
-            this.DataContext = new StaffViewModel();
+            StaffMember = staff;
+            this.DataContext = new StaffValidationViewModel(StaffMember);
         }
 
-        private void UpdateButton(object sender, RoutedEventArgs e)
+        private void AddClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new StaffMemberPage());
+            this.DialogResult = true;
+        }
+
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
