@@ -10,24 +10,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ServiceCenter.View
 {
+    using ServiceCenter.Models;
     using ServiceCenter.ViewModel;
 
-    public partial class ClientPage : Page
+    public partial class EditClientWindow : Window
     {
-        public ClientPage()
+        public Client Client { get; private set; }
+
+        public EditClientWindow(Client client)
         {
             InitializeComponent();
-            this.DataContext = new ClientViewModel();
+            Client = client;
+            this.DataContext = new ClientValidationViewModel(Client);
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        private void AcceptClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ClientPage());
+            this.DialogResult = true;
+        }
+
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

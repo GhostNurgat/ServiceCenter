@@ -15,7 +15,21 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="48" />
             <RowDefinition />
+            <RowDefinition Height="48" />
         </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Content="+" Width="30" Height="30"
+                    Background="{StaticResource AdditionalColor}" Foreground="White"
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Margin="10,0"
+                    Command="{Binding AddCommand}" />
+            <Button Content="Обновить" Width="80" Height="30"
+                    Background="{StaticResource AdditionalColor}" Foreground="White"
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Margin="10,0"
+                    Click="UpdateButton_Click" />
+        </StackPanel>
 
         <ListBox x:Name="clientListBox" Grid.Row="1"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -50,7 +64,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Grid.Column="1" Grid.RowSpan="2"
+        <StackPanel Grid.Column="1" Grid.RowSpan="3"
                     DataContext="{Binding SelectedClient}">
             <Label Content="Информация о клиенте" Style="{StaticResource HeaderLabel_1}" />
 
@@ -124,6 +138,16 @@
                     </TextBlock>
                 </StackPanel>
             </GroupBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2" HorizontalAlignment="Center">
+            <Button Content="Редактировать" Style="{StaticResource MenuButton}"
+                    Height="30"
+                    Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=clientListBox, Path=SelectedItem}" />
+            <Button Content="Удалить" Style="{StaticResource MenuButton}"
+                    Height="30"
+                    Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=clientListBox, Path=SelectedItem}" />
         </StackPanel>
     </Grid>
 </Page>

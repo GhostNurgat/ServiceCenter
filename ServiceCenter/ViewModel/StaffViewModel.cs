@@ -13,6 +13,7 @@ using ServiceCenter.Extensions;
 namespace ServiceCenter.ViewModel
 {
     using ServiceCenter.View;
+    using System.Windows;
 
     public class StaffViewModel : INotifyPropertyChanged
     {
@@ -96,6 +97,10 @@ namespace ServiceCenter.ViewModel
             get => removeCommand ??
                 (removeCommand = new RelayCommand((obj) =>
                 {
+                    var result = MessageBox.Show("Вы уверены, что хотите удалить сотрудника? После удаления, нет возможности восстановление данных.",
+                        "Удаление сотрудника", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (result != MessageBoxResult.Yes) return;
+
                     StaffMember staff = obj as StaffMember;
                     if (staff != null)
                     {
