@@ -58,6 +58,10 @@
                                 <Run Text=" Адрес:" FontWeight="SemiBold" />
                                 <Run Text="{Binding Address}" />
                             </TextBlock>
+                            <TextBlock FontSize="14">
+                                <Run Text=" Код клиента: " FontWeight="DemiBold" />
+                                <Run Text="{Binding ClientId}" />
+                            </TextBlock>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

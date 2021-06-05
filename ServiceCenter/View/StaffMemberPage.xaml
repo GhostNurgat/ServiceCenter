@@ -46,6 +46,10 @@
                             <Run Text="Телефон:" FontWeight="Bold" />
                             <Run Text="{Binding Phone}" />
                         </TextBlock>
+                        <TextBlock FontSize="14" FontWeight="DemiBold">
+                            <Run Text="Код сотрудника: " />
+                            <Run Text="{Binding StaffId}" />
+                        </TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -18,11 +18,18 @@
 
         <StackPanel Orientation="Horizontal" Background="{StaticResource MainColor}">
             <Label Content="Сотрудники" Style="{StaticResource NavigationLabel}" 
-                   VerticalAlignment="Center" MouseDown="GoToStaffPage" />
+                   VerticalAlignment="Center" MouseDown="GoToStaffPage"
+                   x:Name="staffPage" Visibility="Hidden" />
             <Label Content="Клиенты" Style="{StaticResource NavigationLabel}"
-                   VerticalAlignment="Center" MouseDown="GoToClientPage" />
+                   VerticalAlignment="Center" MouseDown="GoToClientPage"
+                   x:Name="clientPage" Visibility="Hidden" />
             <Label Content="Заказы" Style="{StaticResource NavigationLabel}"
-                   VerticalAlignment="Center" MouseDown="GoToOrderPage" />
+                   VerticalAlignment="Center" MouseDown="GoToOrderPage"
+                   x:Name="orderPage" Visibility="Hidden" />
+            <Label Content="Вход" Style="{StaticResource NavigationLabel}"
+                   VerticalAlignment="Center"
+                   x:Name="loginLabel"
+                   MouseDown="Login" />
         </StackPanel>
 
         <Frame Grid.Row="1" Grid.ColumnSpan="2"
@@ -31,7 +38,8 @@
         <StackPanel Grid.Column="1"
                     Background="{StaticResource MainColor}">
             <Button Content="Изменить код" Style="{StaticResource MenuButton}"
-                    Height="45" />
+                    Height="45" Click="LoginWindow" Visibility="Hidden"
+                    x:Name="changeButton" />
         </StackPanel>
     </Grid>
 </Window>
