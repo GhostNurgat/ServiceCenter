@@ -12,6 +12,7 @@ namespace ServiceCenter.Models
     {
         [Key]
         [ForeignKey("Client")]
+        [Index]
         public int OrderId { get; set; }
 
         [Required(ErrorMessage = "Поле \"Услуга\" является обезательным.")]

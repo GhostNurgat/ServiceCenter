@@ -21,7 +21,8 @@
         <StackPanel Orientation="Horizontal">
             <Button Content="+" FontSize="16"
                     Background="{StaticResource AdditionalColor}" Foreground="White"
-                    Width="30" Height="30" Margin="8,0" />
+                    Width="30" Height="30" Margin="8,0"
+                    Command="{Binding AddCommand}" />
             <Button Content="Обновить" Width="100" Height="30"
                     Background="{StaticResource AdditionalColor}" Foreground="White"
                     FontSize="16"
@@ -119,9 +120,11 @@
         <StackPanel Orientation="Horizontal" Grid.Row="2"
                     HorizontalAlignment="Center">
             <Button Content="Редактировать" Style="{StaticResource MenuButton}"
-                    Height="30" />
+                    Height="30"
+                    Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=orderListBox, Path=SelectedItem}" />
             <Button Content="Удалить" Style="{StaticResource MenuButton}"
-                    Height="30" />
+                    Height="30"
+                    Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=orderListBox, Path=SelectedItem}" />
         </StackPanel>
     </Grid>
 </Page>

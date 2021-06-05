@@ -1,0 +1,158 @@
+﻿<Window x:Class="ServiceCenter.View.EditOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServiceCenter.View"
+        mc:Ignorable="d"
+        Title="EditOrderWindow" Height="580" Width="600" ResizeMode="NoResize">
+    <StackPanel>
+        <Label Content="Редактирование заказа" Style="{StaticResource HeaderLabel_1}" />
+
+        <TextBlock FontSize="16" Text="Услуга" FontWeight="Bold" />
+        <TextBox Text="{Binding Service, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" FontSize="16">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder>
+                            <ItemsControl ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </AdornedElementPlaceholder>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+
+        <TextBlock Text="Цена" FontSize="16" FontWeight="Bold" />
+        <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" FontSize="16">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder>
+                            <ItemsControl ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </AdornedElementPlaceholder>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+
+        <TextBlock Text="Гарантия" FontSize="16" FontWeight="Bold" />
+        <TextBox FontSize="16" Text="{Binding Guarantee, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder>
+                            <ItemsControl ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </AdornedElementPlaceholder>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+
+        <TextBlock Text="Код сотрудника" FontSize="16" FontWeight="Bold" />
+        <TextBox FontSize="16" Text="{Binding StaffId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder>
+                            <ItemsControl ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </AdornedElementPlaceholder>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+
+        <TextBlock Text="Дата заказа" FontSize="16" FontWeight="Bold" />
+        <DatePicker FontSize="16" SelectedDate="{Binding DateOrder, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder>
+                            <ItemsControl ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </AdornedElementPlaceholder>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </DatePicker>
+
+        <TextBlock Text="Завершено" FontSize="16" FontWeight="Bold" />
+        <TextBox FontSize="16" Text="{Binding Done, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder>
+                            <ItemsControl ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </AdornedElementPlaceholder>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,25">
+            <TextBlock Text="К ОПЛАТЕ " FontSize="22" FontWeight="Bold" />
+            <TextBox FontSize="22" Text="{Binding Payment, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Width="185">
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <StackPanel>
+                            <AdornedElementPlaceholder>
+                                <ItemsControl ItemsSource="{Binding}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </AdornedElementPlaceholder>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,35"
+                    HorizontalAlignment="Center">
+            <Button Content="Подтвердить" Style="{StaticResource MenuButton}"
+                    Height="40" Click="AcceptButton" />
+            <Button Content="Отмена" Style="{StaticResource MenuButton}"
+                    Height="40" Click="CancelButton" />
+        </StackPanel>
+    </StackPanel>
+</Window>
