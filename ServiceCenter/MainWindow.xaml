@@ -22,7 +22,7 @@
             <Label Content="Клиенты" Style="{StaticResource NavigationLabel}"
                    VerticalAlignment="Center" MouseDown="GoToClientPage" />
             <Label Content="Заказы" Style="{StaticResource NavigationLabel}"
-                   VerticalAlignment="Center" />
+                   VerticalAlignment="Center" MouseDown="GoToOrderPage" />
         </StackPanel>
 
         <Frame Grid.Row="1" Grid.ColumnSpan="2"

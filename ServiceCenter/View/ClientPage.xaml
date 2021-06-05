@@ -22,12 +22,12 @@
             <Button Content="+" Width="30" Height="30"
                     Background="{StaticResource AdditionalColor}" Foreground="White"
                     VerticalAlignment="Center" HorizontalAlignment="Center"
-                    Margin="10,0"
+                    Margin="10,0" FontSize="16"
                     Command="{Binding AddCommand}" />
             <Button Content="Обновить" Width="80" Height="30"
                     Background="{StaticResource AdditionalColor}" Foreground="White"
                     VerticalAlignment="Center" HorizontalAlignment="Center"
-                    Margin="10,0"
+                    Margin="10,0" FontSize="16"
                     Click="UpdateButton_Click" />
         </StackPanel>
 

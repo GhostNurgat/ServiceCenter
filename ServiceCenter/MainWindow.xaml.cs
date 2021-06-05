@@ -33,5 +33,10 @@ namespace ServiceCenter
         {
             MainFrame.Navigate(new ClientPage());
         }
+
+        private void GoToOrderPage(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Navigate(new OrderPage());
+        }
     }
 }

@@ -68,6 +68,7 @@
     <Compile Include="Extensions\IEnumerableExtension.cs" />
     <Compile Include="ViewModel\ClientValidationViewModel.cs" />
     <Compile Include="ViewModel\ClientViewModel.cs" />
+    <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\StaffValidationViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\StaffViewModel.cs" />
@@ -85,6 +86,9 @@
     </Compile>
     <Compile Include="View\EditStaffWindow.xaml.cs">
       <DependentUpon>EditStaffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrderPage.xaml.cs">
+      <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\StaffMemberPage.xaml.cs">
       <DependentUpon>StaffMemberPage.xaml</DependentUpon>
@@ -119,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditStaffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
