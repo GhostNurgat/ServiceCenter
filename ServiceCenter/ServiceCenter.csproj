@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -77,6 +78,11 @@
     <Compile Include="Migrations\202106051142269_OrderIndex.designer.cs">
       <DependentUpon>202106051142269_OrderIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106201201044_Recreate.cs" />
+    <Compile Include="Migrations\202106201201044_Recreate.designer.cs">
+      <DependentUpon>202106201201044_Recreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Position.cs" />
     <Compile Include="ViewModel\ClientValidationViewModel.cs" />
     <Compile Include="ViewModel\ClientViewModel.cs" />
     <Compile Include="ViewModel\OrderValidationViewModel.cs" />
@@ -199,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106051142269_OrderIndex.resx">
       <DependentUpon>202106051142269_OrderIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106201201044_Recreate.resx">
+      <DependentUpon>202106201201044_Recreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

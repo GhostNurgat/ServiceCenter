@@ -15,6 +15,16 @@ namespace ServiceCenter.Models
         [Index]
         public int OrderId { get; set; }
 
+        [Required(ErrorMessage = "Поле \"Вид техники\" является обезательным.")]
+        public string Technology { get; set; }
+
+        [Required(ErrorMessage = "Поле \"Бренд\" является обезательным.")]
+        public string BrandName { get; set; }
+
+        [Required(ErrorMessage = "Поле \"Название техники\" является обезательным.")]
+        [StringLength(65, ErrorMessage = "Превышено макс. длины строки для поля \"Название техники\"!")]
+        public string TechnologyName { get; set; }
+
         [Required(ErrorMessage = "Поле \"Услуга\" является обезательным.")]
         [StringLength(50, ErrorMessage = "Превышено макс. длины строки для поля \"Услуга\"!")]
         public string Service { get; set; }

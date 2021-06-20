@@ -69,6 +69,11 @@
                     DataContext="{Binding SelectedOrder}">
             <Label Content="Информация о заказах" Style="{StaticResource HeaderLabel_1}" />
 
+            <GroupBox Header="Техника" Margin="5,8"
+                      FontSize="16">
+                
+            </GroupBox>
+
             <TextBlock Margin="10,28,10,0" FontSize="18">
                 <Run Text="Услуга: " FontWeight="SemiBold" />
                 <Run Text="{Binding Service}" />

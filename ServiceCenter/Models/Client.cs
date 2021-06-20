@@ -31,16 +31,6 @@ namespace ServiceCenter.Models
         [StringLength(60, ErrorMessage = "Превышено макс. длины строки для поля \"Адрес\"!")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "Поле \"Вид техники\" является обезательным.")]
-        public string Technology { get; set; }
-
-        [Required(ErrorMessage = "Поле \"Бренд\" является обезательным.")]
-        public string BrandName { get; set; }
-
-        [Required(ErrorMessage = "Поле \"Название техники\" является обезательным.")]
-        [StringLength(65, ErrorMessage = "Превышено макс. длины строки для поля \"Название техники\"!")]
-        public string TechnologyName { get; set; }
-
         [Required(ErrorMessage = "Поле \"Номер телефона\" является обезательным.")]
         [StringLength(25, ErrorMessage = "Превышено макс. длины строки для поля \"Номер телефона\"!")]
         [DataType(DataType.PhoneNumber, ErrorMessage = "Неверный номер телефона!")]

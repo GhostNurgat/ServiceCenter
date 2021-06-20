@@ -73,36 +73,6 @@ namespace ServiceCenter.ViewModel
             }
         }
 
-        public string Technology
-        {
-            get => _client.Technology;
-            set
-            {
-                _client.Technology = value;
-                ValidateModelProperty(value, "Technology");
-            }
-        }
-
-        public string BrandName
-        {
-            get => _client.BrandName;
-            set
-            {
-                _client.BrandName = value;
-                ValidateModelProperty(value, "BrandName");
-            }
-        }
-
-        public string TechnologyName
-        {
-            get => _client.TechnologyName;
-            set
-            {
-                _client.TechnologyName = value;
-                ValidateModelProperty(value, "TechnologyName");
-            }
-        }
-
         public string Phone
         {
             get => _client.Phone;
@@ -162,9 +132,6 @@ namespace ServiceCenter.ViewModel
             RaiseErrorsChanged("Patronymic");
             RaiseErrorsChanged("Birthday");
             RaiseErrorsChanged("Address");
-            RaiseErrorsChanged("Technology");
-            RaiseErrorsChanged("BrandName");
-            RaiseErrorsChanged("TechnologyName");
             RaiseErrorsChanged("Phone");
             RaiseErrorsChanged("Email");
         }

@@ -82,9 +82,6 @@ namespace ServiceCenter.ViewModel
                         Patronymic = client.Patronymic,
                         Birthday = client.Birthday,
                         Address = client.Address,
-                        Technology = client.Technology,
-                        BrandName = client.BrandName,
-                        TechnologyName = client.TechnologyName,
                         Phone = client.Phone,
                         Email = client.Email
                     };
@@ -100,9 +97,6 @@ namespace ServiceCenter.ViewModel
                             client.Patronymic = editClient.Client.Patronymic;
                             client.Birthday = editClient.Client.Birthday;
                             client.Address = editClient.Client.Address;
-                            client.Technology = editClient.Client.Technology;
-                            client.BrandName = editClient.Client.BrandName;
-                            client.TechnologyName = editClient.Client.TechnologyName;
                             client.Phone = editClient.Client.Phone;
                             client.Email = editClient.Client.Email;
 

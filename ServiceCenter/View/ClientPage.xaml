@@ -108,27 +108,6 @@
                 </Grid>
             </GroupBox>
 
-            <GroupBox Header="Техника" Margin="5,8"
-                      FontSize="16" FontWeight="Bold">
-                <StackPanel Margin="17,8">
-                    <TextBlock FontSize="15" FontWeight="DemiBold"
-                               Margin="0,8">
-                        <Run Text="Вид техники:" />
-                        <Run Text="{Binding Technology}" />
-                    </TextBlock>
-                    <TextBlock FontSize="15" FontWeight="DemiBold"
-                               Margin="0,8">
-                        <Run Text="Производитель:" />
-                        <Run Text="{Binding BrandName}" />
-                    </TextBlock>
-                    <TextBlock FontSize="15" FontWeight="DemiBold"
-                               Margin="0,8">
-                        <Run Text="Модель:" />
-                        <Run Text="{Binding TechnologyName}" />
-                    </TextBlock>
-                </StackPanel>
-            </GroupBox>
-
             <GroupBox Header="Контактные данные" Margin="5,8"
                       FontSize="16" FontWeight="Bold">
                 <StackPanel>

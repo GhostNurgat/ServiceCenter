@@ -53,16 +53,6 @@ namespace ServiceCenter.ViewModel
             }
         }
 
-        public string Position
-        {
-            get => _staff.Position;
-            set
-            {
-                _staff.Position = value;
-                ValidateModelProperty(value, "Position");
-            }
-        }
-
         public string Phone
         {
             get => _staff.Phone;
@@ -110,7 +100,6 @@ namespace ServiceCenter.ViewModel
             RaiseErrorsChanged("Surname");
             RaiseErrorsChanged("Name");
             RaiseErrorsChanged("Patronymic");
-            RaiseErrorsChanged("Position");
             RaiseErrorsChanged("Phone");
         }
 
