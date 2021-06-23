@@ -9,6 +9,7 @@ namespace ServiceCenter.Models
 {
     public class Client
     {
+        [Key]
         public int ClientId { get; set; }
 
         [Required(ErrorMessage = "Поле \"Фамилия\" является обезательным.")]
@@ -41,6 +42,10 @@ namespace ServiceCenter.Models
         [DataType(DataType.EmailAddress, ErrorMessage = "Неверный Email!")]
         public string Email { get; set; }
 
-        public virtual Order Order { get; set; }
+        public virtual List<Order> Orders { get; set; }
+        public Client()
+        {
+            Orders = new List<Order>();
+        }
     }
 }

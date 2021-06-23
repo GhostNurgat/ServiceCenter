@@ -10,10 +10,9 @@ namespace ServiceCenter.Models
 {
     public class Order
     {
-        [Key]
-        [ForeignKey("Client")]
-        [Index]
         public int OrderId { get; set; }
+
+        public int ClientId { get; set; }
 
         [Required(ErrorMessage = "Поле \"Вид техники\" является обезательным.")]
         public string Technology { get; set; }

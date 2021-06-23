@@ -82,6 +82,14 @@
     <Compile Include="Migrations\202106201201044_Recreate.designer.cs">
       <DependentUpon>202106201201044_Recreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106230527118_OrderRebuild.cs" />
+    <Compile Include="Migrations\202106230527118_OrderRebuild.designer.cs">
+      <DependentUpon>202106230527118_OrderRebuild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106230529590_OrderInitial.cs" />
+    <Compile Include="Migrations\202106230529590_OrderInitial.designer.cs">
+      <DependentUpon>202106230529590_OrderInitial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Position.cs" />
     <Compile Include="ViewModel\ClientValidationViewModel.cs" />
     <Compile Include="ViewModel\ClientViewModel.cs" />
@@ -208,6 +216,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106201201044_Recreate.resx">
       <DependentUpon>202106201201044_Recreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106230527118_OrderRebuild.resx">
+      <DependentUpon>202106230527118_OrderRebuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106230529590_OrderInitial.resx">
+      <DependentUpon>202106230529590_OrderInitial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
