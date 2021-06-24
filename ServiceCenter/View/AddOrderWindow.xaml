@@ -5,9 +5,97 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ServiceCenter.View"
         mc:Ignorable="d"
-        Title="Добавление заказа" Height="580" Width="600" ResizeMode="NoResize">
+        Title="Добавление заказа" Height="680" Width="600" ResizeMode="NoResize">
     <StackPanel>
         <Label Content="Добавление заказа" Style="{StaticResource HeaderLabel_1}" />
+
+        <TextBlock FontSize="16" FontWeight="Bold" Text="Клиент" Margin="5,0" />
+        <TextBox Text="{Binding ClientId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                 FontSize="16">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder>
+                            <ItemsControl ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </AdornedElementPlaceholder>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+
+        <GroupBox Header="Техника" FontSize="16" FontWeight="Bold">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Вид техники" />
+                    <TextBox Text="{Binding Technology, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Width="205">
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <StackPanel>
+                                    <AdornedElementPlaceholder>
+                                        <ItemsControl ItemsSource="{Binding}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </AdornedElementPlaceholder>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Производитель" />
+                    <TextBox Text="{Binding BrandName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Width="205">
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <StackPanel>
+                                    <AdornedElementPlaceholder>
+                                        <ItemsControl ItemsSource="{Binding}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </AdornedElementPlaceholder>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Модель" />
+                    <TextBox Text="{Binding TechnologyName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Width="205">
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <StackPanel>
+                                    <AdornedElementPlaceholder>
+                                        <ItemsControl ItemsSource="{Binding}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </AdornedElementPlaceholder>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
 
         <TextBlock FontSize="16" Text="Услуга" FontWeight="Bold" />
         <TextBox Text="{Binding Service, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" FontSize="16">
@@ -66,8 +154,9 @@
             </Validation.ErrorTemplate>
         </TextBox>
 
-        <TextBlock Text="Код сотрудника" FontSize="16" FontWeight="Bold" />
-        <TextBox FontSize="16" Text="{Binding StaffId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+        <TextBlock Text="Сотрудник" FontSize="16" FontWeight="Bold" Margin="5,0" />
+        <TextBox Text="{Binding StaffId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                 FontSize="16">
             <Validation.ErrorTemplate>
                 <ControlTemplate>
                     <StackPanel>

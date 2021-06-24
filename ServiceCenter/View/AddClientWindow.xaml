@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ServiceCenter.View"
         mc:Ignorable="d"
-        Title="AddClientWindow" Height="400" Width="600" ResizeMode="NoResize">
+        Title="Добавление клиента" Height="400" Width="600" ResizeMode="NoResize">
     <StackPanel>
         <Label Content="Добавление клиента" Style="{StaticResource HeaderLabel_1}" />
 

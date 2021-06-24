@@ -12,6 +12,7 @@ namespace ServiceCenter.Models
     {
         public int OrderId { get; set; }
 
+        [Required]
         public int ClientId { get; set; }
 
         [Required(ErrorMessage = "Поле \"Вид техники\" является обезательным.")]

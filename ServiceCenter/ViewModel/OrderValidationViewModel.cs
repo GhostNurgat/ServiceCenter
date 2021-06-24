@@ -33,6 +33,46 @@ namespace ServiceCenter.ViewModel
             }
         }
 
+        public int ClientId
+        {
+            get => _order.ClientId;
+            set
+            {
+                _order.ClientId = value;
+                ValidateModelProperty(value, "ClientId");
+            }
+        }
+
+        public string Technology
+        {
+            get => _order.Technology;
+            set
+            {
+                _order.Technology = value;
+                ValidateModelProperty(value, "Technology");
+            }
+        }
+
+        public string BrandName
+        {
+            get => _order.BrandName;
+            set
+            {
+                _order.BrandName = value;
+                ValidateModelProperty(value, "BrandName");
+            }
+        }
+
+        public string TechnologyName
+        {
+            get => _order.TechnologyName;
+            set
+            {
+                _order.TechnologyName = value;
+                ValidateModelProperty(value, "TechnologyName");
+            }
+        }
+
         public decimal Price
         {
             get => _order.Price;
@@ -128,6 +168,7 @@ namespace ServiceCenter.ViewModel
             }
 
             RaiseErrorsChanged("Service");
+            RaiseErrorsChanged("ClientId");
             RaiseErrorsChanged("Price");
             RaiseErrorsChanged("Guarantee");
             RaiseErrorsChanged("StaffId");

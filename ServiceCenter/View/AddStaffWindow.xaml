@@ -78,7 +78,7 @@
             <ComboBox Width="165" FontSize="13"
                       ItemsSource="{Binding Positions, Source={StaticResource StaffController}}"
                       DisplayMemberPath="Name"
-                      SelectedValue="{Binding PositionId}"
+                      SelectedValue="{Binding PositionId, Mode=TwoWay}"
                       SelectedValuePath="PositionId" />
             <Label Content="Телефон" FontSize="13" />
             <TextBox Width="165" Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
