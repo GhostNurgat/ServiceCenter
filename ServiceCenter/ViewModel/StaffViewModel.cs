@@ -13,6 +13,7 @@ using ServiceCenter.Extensions;
 namespace ServiceCenter.ViewModel
 {
     using ServiceCenter.View;
+    using System.Data.Entity.Infrastructure;
     using System.Windows;
 
     public class StaffViewModel : INotifyPropertyChanged
@@ -40,6 +41,17 @@ namespace ServiceCenter.ViewModel
             StaffMembers = db.StaffMembers.Local.ToObservableCollection();
         }
 
+        private string surname;
+        public string Surname
+        {
+            get => surname;
+            set
+            {
+                surname = value;
+                OnPropertyChanged("Surname");
+            }
+        }
+
         public RelayCommand AddCommand
         {
             get => addCommand ??
@@ -50,7 +62,16 @@ namespace ServiceCenter.ViewModel
                     {
                         StaffMember member = addStaff.StaffMember;
                         db.StaffMembers.Add(member);
-                        db.SaveChanges();
+
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Произошла ошибка: Данные не сохранены, т.к. все поля были пустые.", 
+                                "Обновление база данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                 }));
         }
@@ -69,27 +90,35 @@ namespace ServiceCenter.ViewModel
                         Surname = staffMember.Surname,
                         Name = staffMember.Name,
                         Patronymic = staffMember.Patronymic,
-                        Position = staffMember.Position,
+                        PositionId = staffMember.PositionId,
                         Phone = staffMember.Phone
                     };
                     EditStaffWindow editStaff = new EditStaffWindow(staff);
 
-                    if (editStaff.ShowDialog() == true)
+                    try
                     {
-                        staffMember = db.StaffMembers.Find(editStaff.StaffMember.StaffId);
-                        if (staffMember != null)
+                        if (editStaff.ShowDialog() == true)
                         {
-                            staffMember.Surname = editStaff.StaffMember.Surname;
-                            staffMember.Name = editStaff.StaffMember.Name;
-                            staffMember.Patronymic = editStaff.StaffMember.Patronymic;
-                            staffMember.Position = editStaff.StaffMember.Position;
-                            staffMember.Phone = editStaff.StaffMember.Phone;
+                            staffMember = db.StaffMembers.Find(editStaff.StaffMember.StaffId);
+                            if (staffMember != null)
+                            {
+                                staffMember.Surname = editStaff.StaffMember.Surname;
+                                staffMember.Name = editStaff.StaffMember.Name;
+                                staffMember.Patronymic = editStaff.StaffMember.Patronymic;
+                                staffMember.PositionId = editStaff.StaffMember.PositionId;
+                                staffMember.Phone = editStaff.StaffMember.Phone;
 
-                            db.Entry(staffMember).State = EntityState.Modified;
-                            db.SaveChanges();
+                                db.Entry(staffMember).State = EntityState.Modified;
+                                db.SaveChanges();
+                            }
                         }
                     }
-                }));
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Произошла ошибка: Данные не сохранены, т.к. все поля были пустые.",
+                                "Обновление база данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }, (obj) => StaffMembers.Count > 0));
         }
 
         public RelayCommand RemoveCommand
@@ -118,6 +147,20 @@ namespace ServiceCenter.ViewModel
                         db.StaffMembers.Remove(staff);
                     }
                 }, (obj) => StaffMembers.Count > 0));
+        }
+
+        public void SearchBySurname()
+        {
+            StaffMembers = db.StaffMembers
+                .Where(s => s.Surname.Contains(Surname))
+                .ToObservableCollection();
+        }
+
+        public void FilterPosition(string selectedItem)
+        {
+            StaffMembers = db.StaffMembers
+                .Where(s => s.Position.Name.Contains(selectedItem))
+                .ToObservableCollection();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

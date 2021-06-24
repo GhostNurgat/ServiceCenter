@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ServiceCenter.View"
         mc:Ignorable="d"
-        Title="EditClientWindow" Height="480" Width="600" ResizeMode="NoResize">
+        Title="EditClientWindow" Height="400" Width="600" ResizeMode="NoResize">
     <StackPanel>
         <Label Content="Редактирование клиента" Style="{StaticResource HeaderLabel_1}" />
 
@@ -127,74 +127,6 @@
                     </StackPanel>
                 </StackPanel>
             </Grid>
-        </GroupBox>
-
-        <GroupBox Header="Техника" FontSize="14" FontWeight="Bold">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="12,0">
-                    <Label Content="Вид техники" FontSize="13" />
-                    <TextBox Width="185" Text="{Binding Technology, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                             FontSize="13" VerticalAlignment="Center">
-                        <Validation.ErrorTemplate>
-                            <ControlTemplate>
-                                <StackPanel>
-                                    <AdornedElementPlaceholder x:Name="technologyTextBox">
-                                        <ItemsControl ItemsSource="{Binding}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </AdornedElementPlaceholder>
-                                </StackPanel>
-                            </ControlTemplate>
-                        </Validation.ErrorTemplate>
-                    </TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="12,0">
-                    <Label Content="Бренд" FontSize="13" />
-                    <TextBox Width="185" Text="{Binding BrandName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                             FontSize="13" VerticalAlignment="Center" Margin="40,0">
-                        <Validation.ErrorTemplate>
-                            <ControlTemplate>
-                                <StackPanel>
-                                    <AdornedElementPlaceholder x:Name="brandTextBox">
-                                        <ItemsControl ItemsSource="{Binding}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </AdornedElementPlaceholder>
-                                </StackPanel>
-                            </ControlTemplate>
-                        </Validation.ErrorTemplate>
-                    </TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="12,0">
-                    <Label Content="Название техники" FontSize="13" />
-                    <TextBox Width="185" Text="{Binding TechnologyName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                             FontSize="13" VerticalAlignment="Center">
-                        <Validation.ErrorTemplate>
-                            <ControlTemplate>
-                                <StackPanel>
-                                    <AdornedElementPlaceholder x:Name="techNameTextBox">
-                                        <ItemsControl ItemsSource="{Binding}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </AdornedElementPlaceholder>
-                                </StackPanel>
-                            </ControlTemplate>
-                        </Validation.ErrorTemplate>
-                    </TextBox>
-                </StackPanel>
-            </StackPanel>
         </GroupBox>
 
         <Label Content="Email" FontSize="14" FontWeight="Bold" />

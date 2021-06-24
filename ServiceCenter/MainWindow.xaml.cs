@@ -83,6 +83,7 @@ namespace ServiceCenter
                     orderPage.Visibility = Visibility.Hidden;
                     changeButton.Visibility = Visibility.Hidden;
                     loginLabel.Content = "Вход";
+                    CountUser = 0;
                 }
             }
         }

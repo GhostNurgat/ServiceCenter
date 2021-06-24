@@ -44,6 +44,17 @@ namespace ServiceCenter.ViewModel
             }
         }
 
+        private string surname;
+        public string Surname
+        {
+            get => surname;
+            set
+            {
+                surname = value;
+                OnPropertyChanged("Surname");
+            }
+        }
+
         public ClientViewModel()
         {
             db = new ServiceCenterContext();
@@ -57,12 +68,21 @@ namespace ServiceCenter.ViewModel
                 (addCommand = new RelayCommand(obj =>
                 {
                     AddClientWindow addClient = new AddClientWindow(new Client());
-                    if (addClient.ShowDialog() == true)
+                    try
                     {
-                        Client client = addClient.Client;
-                        db.Clients.Add(client);
-                        db.SaveChanges();
+                        if (addClient.ShowDialog() == true)
+                        {
+                            Client client = addClient.Client;
+                            db.Clients.Add(client);
+                            db.SaveChanges();
+                        }
                     }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Произошла ошибка: Данные не сохранены, т.к. все поля были пустые.",
+                            "Обновление база данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                 }));
         }
 
@@ -87,24 +107,32 @@ namespace ServiceCenter.ViewModel
                     };
                     EditClientWindow editClient = new EditClientWindow(temp);
 
-                    if (editClient.ShowDialog() == true)
+                    try
                     {
-                        client = db.Clients.Find(editClient.Client.ClientId);
-                        if (client != null)
+                        if (editClient.ShowDialog() == true)
                         {
-                            client.Surname = editClient.Client.Surname;
-                            client.Name = editClient.Client.Name;
-                            client.Patronymic = editClient.Client.Patronymic;
-                            client.Birthday = editClient.Client.Birthday;
-                            client.Address = editClient.Client.Address;
-                            client.Phone = editClient.Client.Phone;
-                            client.Email = editClient.Client.Email;
+                            client = db.Clients.Find(editClient.Client.ClientId);
+                            if (client != null)
+                            {
+                                client.Surname = editClient.Client.Surname;
+                                client.Name = editClient.Client.Name;
+                                client.Patronymic = editClient.Client.Patronymic;
+                                client.Birthday = editClient.Client.Birthday;
+                                client.Address = editClient.Client.Address;
+                                client.Phone = editClient.Client.Phone;
+                                client.Email = editClient.Client.Email;
 
-                            db.Entry(client).State = EntityState.Modified;
-                            db.SaveChanges();
+                                db.Entry(client).State = EntityState.Modified;
+                                db.SaveChanges();
+                            }
                         }
                     }
-                }));
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Произошла ошибка: Данные не сохранены, т.к. все поля были пустые.",
+                            "Обновление база данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }, (obj) => Clients.Count > 0));
         }
 
         public RelayCommand DeleteCommand
@@ -133,6 +161,13 @@ namespace ServiceCenter.ViewModel
                         db.Clients.Remove(client);
                     }
                 }, (obj) => Clients.Count > 0));
+        }
+
+        public void SearchBySurname()
+        {
+            Clients = db.Clients
+                .Where(c => c.Surname.Contains(Surname))
+                .ToObservableCollection();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

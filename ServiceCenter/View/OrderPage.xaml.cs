@@ -19,15 +19,28 @@ namespace ServiceCenter.View
 
     public partial class OrderPage : Page
     {
+        OrderViewModel model = new OrderViewModel();
+
         public OrderPage()
         {
             InitializeComponent();
-            this.DataContext = new OrderViewModel();
+            this.DataContext = model;
         }
 
         private void UpdateButton(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new OrderPage());
+        }
+
+        private void SearchBySurname(object sender, TextChangedEventArgs e)
+        {
+            model.SearchBySurname();
+        }
+
+        private void SortDateOrder(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            model.SortDateOrder(comboBox.SelectedIndex);
         }
     }
 }

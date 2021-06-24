@@ -20,15 +20,28 @@ namespace ServiceCenter.View
 
     public partial class StaffMemberPage : Page
     {
+        StaffViewModel model = new StaffViewModel();
+
         public StaffMemberPage()
         {
             InitializeComponent();
-            this.DataContext = new StaffViewModel();
+            this.DataContext = model;
         }
 
         private void UpdateButton(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new StaffMemberPage());
+        }
+
+        private void SearchBySurname(object sender, TextChangedEventArgs e)
+        {
+            model.SearchBySurname();
+        }
+
+        private void PositionFilter(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            model.FilterPosition(comboBox.SelectedValue.ToString());
         }
     }
 }

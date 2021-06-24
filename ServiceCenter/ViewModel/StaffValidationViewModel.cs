@@ -63,6 +63,16 @@ namespace ServiceCenter.ViewModel
             }
         }
 
+        public int PositionId
+        {
+            get => _staff.PositionId;
+            set
+            {
+                _staff.PositionId = value;
+                ValidateModelProperty(value, "PositionId");
+            }
+        }
+
         protected void ValidateModelProperty(object value, string propertyName)
         {
             if (_validationErrors.ContainsKey(propertyName))
@@ -101,6 +111,7 @@ namespace ServiceCenter.ViewModel
             RaiseErrorsChanged("Name");
             RaiseErrorsChanged("Patronymic");
             RaiseErrorsChanged("Phone");
+            RaiseErrorsChanged("PositionId");
         }
 
         public bool HasErrors => _validationErrors.Count > 0;

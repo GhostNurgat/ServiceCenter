@@ -44,6 +44,17 @@ namespace ServiceCenter.ViewModel
             }
         }
 
+        private string surname;
+        public string Surname
+        {
+            get => surname;
+            set
+            {
+                surname = value;
+                OnPropertyChanged("Surname");
+            }
+        }
+
         public OrderViewModel()
         {
             db = new ServiceCenterContext();
@@ -56,16 +67,20 @@ namespace ServiceCenter.ViewModel
             get => addCommand ??
                 (addCommand = new RelayCommand(obj =>
                 {
-                    Order temp = new Order()
+                    AddOrderWindow addOrder = new AddOrderWindow(new Order());
+                    try
                     {
-                        OrderId = Orders.Last().OrderId + 1
-                    };
-                    AddOrderWindow addOrder = new AddOrderWindow(temp);
-                    if (addOrder.ShowDialog() == true)
+                        if (addOrder.ShowDialog() == true)
+                        {
+                            Order order = addOrder.Order;
+                            db.Orders.Add(order);
+                            db.SaveChanges();
+                        }
+                    }
+                    catch (Exception)
                     {
-                        Order order = addOrder.Order;
-                        db.Orders.Add(order);
-                        db.SaveChanges();
+                        MessageBox.Show("Произошла ошибка: Данные не сохранены, т.к. все поля были пустые.",
+                                "Обновление база данных", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }));
         }
@@ -81,6 +96,10 @@ namespace ServiceCenter.ViewModel
                     Order temp = new Order()
                     {
                         OrderId = order.OrderId,
+                        ClientId = order.ClientId,
+                        BrandName = order.BrandName,
+                        Technology = order.Technology,
+                        TechnologyName = order.TechnologyName,
                         Service = order.Service,
                         Price = order.Price,
                         Guarantee = order.Guarantee,
@@ -91,24 +110,36 @@ namespace ServiceCenter.ViewModel
                     };
                     EditOrderWindow editOrder = new EditOrderWindow(temp);
 
-                    if (editOrder.ShowDialog() == true)
+                    try
                     {
-                        order = db.Orders.Find(editOrder.Order.OrderId);
-                        if (order != null)
+                        if (editOrder.ShowDialog() == true)
                         {
-                            order.Service = editOrder.Order.Service;
-                            order.Price = editOrder.Order.Price;
-                            order.Guarantee = editOrder.Order.Guarantee;
-                            order.StaffId = editOrder.Order.StaffId;
-                            order.DateOrder = editOrder.Order.DateOrder;
-                            order.Done = editOrder.Order.Done;
-                            order.Payment = editOrder.Order.Payment;
+                            order = db.Orders.Find(editOrder.Order.OrderId);
+                            if (order != null)
+                            {
+                                order.ClientId = editOrder.Order.ClientId;
+                                order.BrandName = editOrder.Order.BrandName;
+                                order.Technology = editOrder.Order.Technology;
+                                order.TechnologyName = editOrder.Order.TechnologyName;
+                                order.Service = editOrder.Order.Service;
+                                order.Price = editOrder.Order.Price;
+                                order.Guarantee = editOrder.Order.Guarantee;
+                                order.StaffId = editOrder.Order.StaffId;
+                                order.DateOrder = editOrder.Order.DateOrder;
+                                order.Done = editOrder.Order.Done;
+                                order.Payment = editOrder.Order.Payment;
 
-                            db.Entry(order).State = EntityState.Modified;
-                            db.SaveChanges();
+                                db.Entry(order).State = EntityState.Modified;
+                                db.SaveChanges();
+                            }
                         }
                     }
-                }));
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Произошла ошибка: Данные не сохранены, т.к. все поля были пустые.",
+                                "Обновление база данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }, (obj) => Orders.Count > 0));
         }
 
         public RelayCommand DeleteCommand
@@ -138,6 +169,31 @@ namespace ServiceCenter.ViewModel
                         db.Orders.Remove(order);
                     }
                 }, (obj) => Orders.Count > 0));
+        }
+
+        public void SearchBySurname()
+        {
+            Orders = db.Orders
+                .Where(o => o.Client.Surname.Contains(Surname))
+                .ToObservableCollection();
+        }
+
+        public void SortDateOrder(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    Orders = db.Orders.Local.ToObservableCollection();
+                    break;
+                case 1:
+                    Orders = db.Orders
+                        .OrderBy(o => o.DateOrder).ToObservableCollection();
+                    break;
+                case 2:
+                    Orders = db.Orders
+                        .OrderByDescending(o => o.DateOrder).ToObservableCollection();
+                    break;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

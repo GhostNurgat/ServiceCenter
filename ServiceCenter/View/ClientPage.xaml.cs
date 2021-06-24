@@ -19,15 +19,22 @@ namespace ServiceCenter.View
 
     public partial class ClientPage : Page
     {
+        ClientViewModel model = new ClientViewModel();
+
         public ClientPage()
         {
             InitializeComponent();
-            this.DataContext = new ClientViewModel();
+            this.DataContext = model;
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ClientPage());
+        }
+
+        private void SearchBySurname(object sender, TextChangedEventArgs e)
+        {
+            model.SearchBySurname();
         }
     }
 }

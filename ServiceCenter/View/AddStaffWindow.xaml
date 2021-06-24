@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ServiceCenter.View"
+        xmlns:ViewModel="clr-namespace:ServiceCenter.ViewModel"
         mc:Ignorable="d"
         Title="Добавить сотрудника" Height="430" Width="585" ResizeMode="NoResize">
+    <Window.Resources>
+        <ViewModel:PositionViewModel x:Key="StaffController" />
+    </Window.Resources>
     <StackPanel>
         <Label Content="Добавление" Style="{StaticResource HeaderLabel_1}" />
 
@@ -71,24 +75,11 @@
 
         <StackPanel Orientation="Horizontal" Margin="0,8">
             <Label Content="Должность" FontSize="13" />
-            <TextBox Width="165" Text="{Binding Position, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                     FontSize="13">
-                <Validation.ErrorTemplate>
-                    <ControlTemplate>
-                        <StackPanel>
-                            <AdornedElementPlaceholder x:Name="positionTextBox">
-                                <ItemsControl ItemsSource="{Binding}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </AdornedElementPlaceholder>
-                        </StackPanel>
-                    </ControlTemplate>
-                </Validation.ErrorTemplate>
-            </TextBox>
+            <ComboBox Width="165" FontSize="13"
+                      ItemsSource="{Binding Positions, Source={StaticResource StaffController}}"
+                      DisplayMemberPath="Name"
+                      SelectedValue="{Binding PositionId}"
+                      SelectedValuePath="PositionId" />
             <Label Content="Телефон" FontSize="13" />
             <TextBox Width="165" Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                      FontSize="13">

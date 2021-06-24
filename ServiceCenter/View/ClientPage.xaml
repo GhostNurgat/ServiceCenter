@@ -29,6 +29,13 @@
                     VerticalAlignment="Center" HorizontalAlignment="Center"
                     Margin="10,0" FontSize="16"
                     Click="UpdateButton_Click" />
+            <Label Content="Фамилия:" FontSize="16" FontWeight="DemiBold"
+                   VerticalAlignment="Center" />
+            <TextBox Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="8,5" Width="180" Height="30"
+                     FontSize="16"
+                     VerticalAlignment="Center"
+                     TextChanged="SearchBySurname" />
         </StackPanel>
 
         <ListBox x:Name="clientListBox" Grid.Row="1"
