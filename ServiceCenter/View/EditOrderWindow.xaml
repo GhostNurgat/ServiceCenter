@@ -4,30 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ServiceCenter.View"
+        xmlns:ViewModel="clr-namespace:ServiceCenter.ViewModel"
         mc:Ignorable="d"
         Title="Редактирование заказа" Height="680" Width="600" ResizeMode="NoResize">
+    <Window.Resources>
+        <ViewModel:ClientViewModel x:Key="ClientController" />
+        <ViewModel:StaffViewModel x:Key="StaffMemberController" />
+    </Window.Resources>
     <StackPanel>
         <Label Content="Редактирование заказа" Style="{StaticResource HeaderLabel_1}" />
 
         <TextBlock FontSize="16" FontWeight="Bold" Text="Клиент" Margin="5,0" />
-        <TextBox Text="{Binding ClientId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                 FontSize="16">
-            <Validation.ErrorTemplate>
-                <ControlTemplate>
-                    <StackPanel>
-                        <AdornedElementPlaceholder>
-                            <ItemsControl ItemsSource="{Binding}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </AdornedElementPlaceholder>
-                    </StackPanel>
-                </ControlTemplate>
-            </Validation.ErrorTemplate>
-        </TextBox>
+        <ComboBox Width="250" Height="25" HorizontalAlignment="Left" Margin="5,0"
+                  ItemsSource="{Binding Clients, Source={StaticResource ClientController}}"
+                  DisplayMemberPath="Surname"
+                  SelectedValue="{Binding ClientId, Mode=TwoWay}"
+                  SelectedValuePath="ClientId" />
 
         <GroupBox Header="Техника" FontSize="16" FontWeight="Bold">
             <StackPanel>
@@ -135,44 +127,20 @@
             </Validation.ErrorTemplate>
         </TextBox>
 
-        <TextBlock Text="Гарантия" FontSize="16" FontWeight="Bold" />
-        <TextBox FontSize="16" Text="{Binding Guarantee, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
-            <Validation.ErrorTemplate>
-                <ControlTemplate>
-                    <StackPanel>
-                        <AdornedElementPlaceholder>
-                            <ItemsControl ItemsSource="{Binding}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </AdornedElementPlaceholder>
-                    </StackPanel>
-                </ControlTemplate>
-            </Validation.ErrorTemplate>
-        </TextBox>
+        <TextBlock Text="Гарантия" FontSize="16" FontWeight="Bold" Margin="5,0" />
+        <ComboBox Width="250" Height="25" HorizontalAlignment="Left" Margin="5,0"
+                  Text="{Binding Guarantee}"
+                  FontSize="16">
+            <ComboBoxItem Content="Да" />
+            <ComboBoxItem Content="Нет" />
+        </ComboBox>
 
-        <TextBlock Text="Сотрудник" FontSize="16" FontWeight="Bold" />
-        <TextBox Text="{Binding StaffId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                 FontSize="16">
-            <Validation.ErrorTemplate>
-                <ControlTemplate>
-                    <StackPanel>
-                        <AdornedElementPlaceholder>
-                            <ItemsControl ItemsSource="{Binding}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </AdornedElementPlaceholder>
-                    </StackPanel>
-                </ControlTemplate>
-            </Validation.ErrorTemplate>
-        </TextBox>
+        <TextBlock Text="Сотрудник" FontSize="16" FontWeight="Bold" Margin="5,0" />
+        <ComboBox Width="250" Height="25" HorizontalAlignment="Left" Margin="5,0"
+                  ItemsSource="{Binding StaffMembers, Source={StaticResource StaffMemberController}}"
+                  DisplayMemberPath="Surname"
+                  SelectedValue="{Binding StaffId, Mode=TwoWay}"
+                  SelectedValuePath="StaffId" />
 
 
         <TextBlock Text="Дата заказа" FontSize="16" FontWeight="Bold" />
@@ -194,24 +162,13 @@
             </Validation.ErrorTemplate>
         </DatePicker>
 
-        <TextBlock Text="Завершено" FontSize="16" FontWeight="Bold" />
-        <TextBox FontSize="16" Text="{Binding Done, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
-            <Validation.ErrorTemplate>
-                <ControlTemplate>
-                    <StackPanel>
-                        <AdornedElementPlaceholder>
-                            <ItemsControl ItemsSource="{Binding}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" />
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </AdornedElementPlaceholder>
-                    </StackPanel>
-                </ControlTemplate>
-            </Validation.ErrorTemplate>
-        </TextBox>
+        <TextBlock Text="Завершено" FontSize="16" FontWeight="Bold" Margin="5,0" />
+        <ComboBox Width="250" Height="25" HorizontalAlignment="Left" Margin="5,0"
+                  FontSize="16"
+                  Text="{Binding Done}">
+            <ComboBoxItem Content="True" />
+            <ComboBoxItem Content="False" />
+        </ComboBox>
 
         <StackPanel Orientation="Horizontal"
                     Margin="0,25">
