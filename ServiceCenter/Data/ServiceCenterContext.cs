@@ -19,5 +19,7 @@ namespace ServiceCenter
         public DbSet<Client> Clients { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Position> Positions { get; set; }
+        public DbSet<TypeTechnology> TypeTechnologies { get; set; }
+        public DbSet<Service> Services { get; set; }
     }
 }

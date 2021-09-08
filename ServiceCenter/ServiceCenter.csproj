@@ -90,7 +90,13 @@
     <Compile Include="Migrations\202106230529590_OrderInitial.designer.cs">
       <DependentUpon>202106230529590_OrderInitial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109071153152_InitialUpdate.cs" />
+    <Compile Include="Migrations\202109071153152_InitialUpdate.designer.cs">
+      <DependentUpon>202109071153152_InitialUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Position.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\TypeTechnology.cs" />
     <Compile Include="ViewModel\ClientValidationViewModel.cs" />
     <Compile Include="ViewModel\ClientViewModel.cs" />
     <Compile Include="ViewModel\OrderValidationViewModel.cs" />
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106230529590_OrderInitial.resx">
       <DependentUpon>202106230529590_OrderInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109071153152_InitialUpdate.resx">
+      <DependentUpon>202109071153152_InitialUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

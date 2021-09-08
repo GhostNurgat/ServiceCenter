@@ -15,8 +15,8 @@ namespace ServiceCenter.Models
         [Required]
         public int ClientId { get; set; }
 
-        [Required(ErrorMessage = "Поле \"Вид техники\" является обезательным.")]
-        public string Technology { get; set; }
+        [Required(ErrorMessage = "Пожалуйста, выберите тип техники.")]
+        public int TypeId { get; set; }
 
         [Required(ErrorMessage = "Поле \"Бренд\" является обезательным.")]
         public string BrandName { get; set; }
@@ -53,6 +53,6 @@ namespace ServiceCenter.Models
 
         public virtual Client Client { get; set; }
         public virtual StaffMember StaffMember { get; set; }
-
+        public List<TypeTechnology> TypeTechnologies { get; set; } = new List<TypeTechnology>();
     }
 }

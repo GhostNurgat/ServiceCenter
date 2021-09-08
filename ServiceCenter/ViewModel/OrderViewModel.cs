@@ -98,7 +98,6 @@ namespace ServiceCenter.ViewModel
                         OrderId = order.OrderId,
                         ClientId = order.ClientId,
                         BrandName = order.BrandName,
-                        Technology = order.Technology,
                         TechnologyName = order.TechnologyName,
                         Service = order.Service,
                         Price = order.Price,
@@ -119,7 +118,6 @@ namespace ServiceCenter.ViewModel
                             {
                                 order.ClientId = editOrder.Order.ClientId;
                                 order.BrandName = editOrder.Order.BrandName;
-                                order.Technology = editOrder.Order.Technology;
                                 order.TechnologyName = editOrder.Order.TechnologyName;
                                 order.Service = editOrder.Order.Service;
                                 order.Price = editOrder.Order.Price;

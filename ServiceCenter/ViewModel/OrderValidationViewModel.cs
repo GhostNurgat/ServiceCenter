@@ -43,13 +43,13 @@ namespace ServiceCenter.ViewModel
             }
         }
 
-        public string Technology
+        public int TypeId
         {
-            get => _order.Technology;
+            get => _order.TypeId;
             set
             {
-                _order.Technology = value;
-                ValidateModelProperty(value, "Technology");
+                _order.TypeId = value;
+                ValidateModelProperty(value, "TypeId");
             }
         }
 
