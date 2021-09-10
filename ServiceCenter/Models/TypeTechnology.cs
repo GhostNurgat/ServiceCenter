@@ -15,7 +15,7 @@ namespace ServiceCenter.Models
         [Required(ErrorMessage = "Поле \"Название типы техники\" является обязательным!")]
         public string TypeName { get; set; }
 
-        public virtual Service Service { get; set; }
-        public virtual Order Order { get; set; }
+        public virtual List<Service> Services { get; set; } = new List<Service>();
+        public virtual List<Order> Orders { get; set; } = new List<Order>();
     }
 }

@@ -64,6 +64,7 @@ namespace ServiceCenter
                     clientPage.Visibility = Visibility.Visible;
                     orderPage.Visibility = Visibility.Visible;
                     changeButton.Visibility = Visibility.Visible;
+                    typeTechnologyPage.Visibility = Visibility.Visible;
                     loginLabel.Content = "Выход";
                 }
                 else
@@ -82,10 +83,16 @@ namespace ServiceCenter
                     clientPage.Visibility = Visibility.Hidden;
                     orderPage.Visibility = Visibility.Hidden;
                     changeButton.Visibility = Visibility.Hidden;
+                    typeTechnologyPage.Visibility = Visibility.Hidden;
                     loginLabel.Content = "Вход";
                     CountUser = 0;
                 }
             }
+        }
+
+        private void GoToTypeTechnologyPage(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Navigate(new TypeTechnologyPage());
         }
     }
 }

@@ -94,6 +94,10 @@
     <Compile Include="Migrations\202109071153152_InitialUpdate.designer.cs">
       <DependentUpon>202109071153152_InitialUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109080948200_UpdateDBFixed.cs" />
+    <Compile Include="Migrations\202109080948200_UpdateDBFixed.designer.cs">
+      <DependentUpon>202109080948200_UpdateDBFixed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\TypeTechnology.cs" />
@@ -105,6 +109,7 @@
     <Compile Include="ViewModel\StaffValidationViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\StaffViewModel.cs" />
+    <Compile Include="ViewModel\TypeTechnologyViewModel.cs" />
     <Compile Include="View\AddClientWindow.xaml.cs">
       <DependentUpon>AddClientWindow.xaml</DependentUpon>
     </Compile>
@@ -134,6 +139,9 @@
     </Compile>
     <Compile Include="View\StaffMemberPage.xaml.cs">
       <DependentUpon>StaffMemberPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TypeTechnologyPage.xaml.cs">
+      <DependentUpon>TypeTechnologyPage.xaml</DependentUpon>
     </Compile>
     <Page Include="Login\LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -192,6 +200,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\TypeTechnologyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\202105270658338_InitialCreate.cs" />
@@ -232,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109071153152_InitialUpdate.resx">
       <DependentUpon>202109071153152_InitialUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109080948200_UpdateDBFixed.resx">
+      <DependentUpon>202109080948200_UpdateDBFixed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

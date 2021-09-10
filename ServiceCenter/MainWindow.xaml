@@ -26,6 +26,9 @@
             <Label Content="Заказы" Style="{StaticResource NavigationLabel}"
                    VerticalAlignment="Center" MouseDown="GoToOrderPage"
                    x:Name="orderPage" Visibility="Hidden" />
+            <Label Content="Типы техники" Style="{StaticResource NavigationLabel}"
+                   VerticalAlignment="Center" MouseDown="GoToTypeTechnologyPage"
+                   x:Name="typeTechnologyPage" Visibility="Hidden" />
             <Label Content="Вход" Style="{StaticResource NavigationLabel}"
                    VerticalAlignment="Center"
                    x:Name="loginLabel"

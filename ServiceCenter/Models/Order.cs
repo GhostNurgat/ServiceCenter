@@ -53,6 +53,6 @@ namespace ServiceCenter.Models
 
         public virtual Client Client { get; set; }
         public virtual StaffMember StaffMember { get; set; }
-        public List<TypeTechnology> TypeTechnologies { get; set; } = new List<TypeTechnology>();
+        public virtual TypeTechnology TypeTechnology { get; set; }
     }
 }

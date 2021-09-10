@@ -24,6 +24,6 @@ namespace ServiceCenter.Models
 
         public string Description { get; set; }
 
-        public virtual List<TypeTechnology> TypeTechnologies { get; set; } = new List<TypeTechnology>();
+        public virtual TypeTechnology TypeTechnology { get; set; }
     }
 }
